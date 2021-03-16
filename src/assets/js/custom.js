@@ -99,48 +99,6 @@ jQuery(document).ready(function($) {
         });
     });
 
-
-
-    //  ==========
-    //  = Revolution Sliders =
-    //  ==========
-    if (jQuery().revolution) {
-        var $mainSlider = $(".fullwidthbanner").revolution({
-            delay: 1e4,
-            startheight: 377,
-            startwidth: 1400,
-            navigationType: "bullet",
-            navigationStyle: "round",
-            navigationVAlign: "bottom",
-            touchenabled: "on",
-            onHoverStop: "on",
-            navigationArrows: "none",
-            soloArrowLeftHalign: "left",
-            soloArrowLeftValign: "center",
-            soloArrowRightHalign: "right",
-            soloArrowRightValign: "center",
-            navigationVOffset: $('body').hasClass('boxed') ? 10 : 60,
-            navOffsetHorizontal: 0,
-            navOffsetVertical: 20,
-            // no captions for mobile devices
-            hideAllCaptionAtLilmit: 481,
-            hideSliderAtLimit: 300,
-            stopAtSlide: -1,
-            stopAfterLoops: -1,
-            shadow: 0,
-            fullWidth: "on"
-        });
-
-        $('#sliderRevLeft').on('click', function() {
-            $mainSlider.revprev();
-            return false;
-        });
-        $('#sliderRevRight').on('click', function() {
-            $mainSlider.revnext();
-            return false;
-        });
-
-    }
     //  ==========
     //  = Add prettyPhoto for images with class .add-prettyphoto =
     //  ==========
@@ -600,3 +558,46 @@ jQuery(document).ready(function($) {
     //  ==========
     $(window).trigger("scroll").trigger("resize");
 });
+
+function homeSlider() {
+        //  ==========
+    //  = Revolution Sliders =
+    //  ==========
+    if (jQuery().revolution) {
+        var $mainSlider = $(".fullwidthbanner").revolution({
+            delay: 1e4,
+            startheight: 377,
+            startwidth: 1400,
+            navigationType: "bullet",
+            navigationStyle: "round",
+            navigationVAlign: "bottom",
+            touchenabled: "on",
+            onHoverStop: "on",
+            navigationArrows: "none",
+            soloArrowLeftHalign: "left",
+            soloArrowLeftValign: "center",
+            soloArrowRightHalign: "right",
+            soloArrowRightValign: "center",
+            navigationVOffset: $('body').hasClass('boxed') ? 10 : 60,
+            navOffsetHorizontal: 0,
+            navOffsetVertical: 20,
+            // no captions for mobile devices
+            hideAllCaptionAtLilmit: 481,
+            hideSliderAtLimit: 300,
+            stopAtSlide: -1,
+            stopAfterLoops: -1,
+            shadow: 0,
+            fullWidth: "on"
+        });
+
+        $('#sliderRevLeft').on('click', function() {
+            $mainSlider.revprev();
+            return false;
+        });
+        $('#sliderRevRight').on('click', function() {
+            $mainSlider.revnext();
+            return false;
+        });
+
+    }
+}
