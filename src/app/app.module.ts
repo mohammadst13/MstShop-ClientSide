@@ -11,8 +11,12 @@ import {NewProductsComponent} from './pages/index/new-products/new-products.comp
 import {FavoriteProductsComponent} from './pages/index/favorite-products/favorite-products.component';
 import {BrandsComponent} from './pages/index/brands/brands.component';
 import {SliderService} from './services/slider.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { LatesNewsComponent } from './pages/index/lates-news/lates-news.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { AppRoutingModule } from './app-routing.module';
+import { EshopInterceptor } from './Utilities/EshopInterceptor';
 
 @NgModule({
   declarations: [
@@ -25,13 +29,23 @@ import { LatesNewsComponent } from './pages/index/lates-news/lates-news.componen
     NewProductsComponent,
     FavoriteProductsComponent,
     LatesNewsComponent,
-    BrandsComponent
+    BrandsComponent,
+    AboutUsComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
-  providers: [SliderService],
+  providers: [
+    SliderService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: EshopInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
