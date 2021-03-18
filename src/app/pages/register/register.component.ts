@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { AuthService } from 'src/app/services/auth.service';
 import {RegisterUserDTO} from '../../DTOs/Account/RegisterUserDTO';
 
@@ -12,6 +13,7 @@ import {RegisterUserDTO} from '../../DTOs/Account/RegisterUserDTO';
 export class RegisterComponent implements OnInit {
 
   public registerForm: FormGroup;
+  @ViewChild('sweetAlert') private sweetAlert: SwalComponent;
 
   constructor(
     private authService: AuthService
@@ -72,6 +74,11 @@ export class RegisterComponent implements OnInit {
       console.log(res);
       if (res.status === 'Success') {
         this.registerForm.reset();
+      }
+      if (res.status === 'Error') {
+        if (res.data.info === 'EmailExist') {
+          this.sweetAlert.fire();
+        }
       }
     });
   }
