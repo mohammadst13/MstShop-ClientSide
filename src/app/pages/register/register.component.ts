@@ -24,14 +24,37 @@ export class RegisterComponent implements OnInit {
         null,
         [
           Validators.required,
-          Validators.email
+          Validators.email,
+          Validators.maxLength(100)
         ]
       ),
-      firstName: new FormControl(),
-      lastName: new FormControl(),
-      password: new FormControl(),
-      confirmPassword: new FormControl(),
-      address: new FormControl()
+      firstName: new FormControl(
+        null,
+        [
+          Validators.required,
+          Validators.maxLength(100)
+        ]
+      ),
+      lastName: new FormControl(null,
+        [
+          Validators.required,
+          Validators.maxLength(100)
+        ]),
+      password: new FormControl(null,
+        [
+          Validators.required,
+          Validators.maxLength(100)
+        ]),
+      confirmPassword: new FormControl(null,
+        [
+          Validators.required,
+          Validators.maxLength(100)
+        ]),
+      address: new FormControl(null,
+        [
+          Validators.required,
+          Validators.maxLength(500)
+        ])
     });
   }
 
