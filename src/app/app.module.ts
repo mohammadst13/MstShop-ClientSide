@@ -23,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { CookieService } from 'ngx-cookie-service';
+import { ActiveAccountComponent } from './pages/active-account/active-account.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CookieService } from 'ngx-cookie-service';
     AboutUsComponent,
     ContactUsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ActiveAccountComponent
   ],
   imports: [
     BrowserModule,
