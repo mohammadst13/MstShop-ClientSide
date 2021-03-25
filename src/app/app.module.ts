@@ -24,6 +24,10 @@ import { AuthService } from './services/auth.service';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { CookieService } from 'ngx-cookie-service';
 import { ActiveAccountComponent } from './pages/active-account/active-account.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { ProductsService } from './services/products.service';
+import { SingleProductComponent } from './SharedComponents/single-product/single-product.component';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,9 @@ import { ActiveAccountComponent } from './pages/active-account/active-account.co
     ContactUsComponent,
     LoginComponent,
     RegisterComponent,
-    ActiveAccountComponent
+    ActiveAccountComponent,
+    ProductsComponent,
+    SingleProductComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +55,10 @@ import { ActiveAccountComponent } from './pages/active-account/active-account.co
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+    NgxLoadingModule.forRoot({
+      fullScreenBackdrop: true
+    })
   ],
   providers: [
     AuthService,
@@ -59,7 +68,8 @@ import { ActiveAccountComponent } from './pages/active-account/active-account.co
       useClass: EshopInterceptor,
       multi: true
     },
-    CookieService
+    CookieService,
+    ProductsService
   ],
   bootstrap: [AppComponent]
 })
