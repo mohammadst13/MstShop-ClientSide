@@ -2,7 +2,7 @@ import {Product} from './Product';
 
 export class FilterProductsDTO {
   constructor(
-    public title: string,
+    public title: string = '',
     public startPrice: number,
     public endPrice: number,
     public pageId: number,
@@ -12,6 +12,7 @@ export class FilterProductsDTO {
     public takeEntity: number,
     public skipEntity: number,
     public activePage: number,
+    public categories: number[],
     public products: Product[]
   ) {
   }
