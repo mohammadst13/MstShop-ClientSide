@@ -30,6 +30,7 @@ import { SingleProductComponent } from './SharedComponents/single-product/single
 import { NgxLoadingModule } from 'ngx-loading';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSliderModule} from '@angular/material/slider';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import {MatSliderModule} from '@angular/material/slider';
     RegisterComponent,
     ActiveAccountComponent,
     ProductsComponent,
-    SingleProductComponent
+    SingleProductComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
