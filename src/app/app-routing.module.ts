@@ -17,7 +17,7 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'activate-account/:activeCode', component: ActiveAccountComponent},
   {path: 'products', component: ProductsComponent},
-  {path: 'products/:productId', component: ProductDetailComponent}
+  {path: 'products/:productId/:productName', component: ProductDetailComponent}
 ];
 
 
