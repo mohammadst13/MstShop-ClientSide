@@ -31,6 +31,7 @@ import { NgxLoadingModule } from 'ngx-loading';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSliderModule} from '@angular/material/slider';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { OrderService } from './services/order.service';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { ProductDetailComponent } from './pages/product-detail/product-detail.co
       multi: true
     },
     CookieService,
-    ProductsService
+    ProductsService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })
