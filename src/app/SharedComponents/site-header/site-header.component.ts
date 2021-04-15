@@ -33,7 +33,7 @@ export class SiteHeaderComponent implements OnInit {
       }
     });*/
 
-    this.cookieService.delete('Mstshop-cookie');
+    this.cookieService.delete('eshop-cookie');
     this.authService.setCurrentUser(null);
     this.router.navigate(['/']);
   }

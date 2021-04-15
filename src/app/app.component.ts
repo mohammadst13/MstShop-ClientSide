@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from './services/auth.service';
 import {CurrentUser} from './DTOs/Account/CurrentUser';
+import {OrderService} from './services/order.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'MstShop-ClientSide';
+export class AppComponent implements OnInit {
+  title = 'eshop-pro';
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private orderService: OrderService
   ) {
   }
 
@@ -25,6 +27,12 @@ export class AppComponent {
           res.data.address);
 
         this.authService.setCurrentUser(user);
+      }
+    });
+
+    this.orderService.getUserBasketDetails().subscribe(res => {
+      if (res.status === 'Success') {
+        this.orderService._setOrderDetails(res.data);
       }
     });
   }
