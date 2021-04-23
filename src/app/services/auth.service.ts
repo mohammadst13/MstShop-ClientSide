@@ -5,13 +5,13 @@ import {HttpClient} from '@angular/common/http';
 import {LoginUserDTO} from '../DTOs/Account/LoginUserDTO';
 import {ILoginUserAccount} from '../DTOs/Account/ILoginUserAccount';
 import {CurrentUser} from '../DTOs/Account/CurrentUser';
-import { ICheckUserAuthResult } from '../DTOs/Account/ICheckUserAuthResult';
+import {ICheckUserAuthResult} from '../DTOs/Account/ICheckUserAuthResult';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
+  private loggedIn = false;
   private currentUser: BehaviorSubject<CurrentUser> = new BehaviorSubject<CurrentUser>(null);
 
   constructor(
@@ -21,6 +21,15 @@ export class AuthService {
 
   setCurrentUser(user: CurrentUser): void {
     this.currentUser.next(user);
+    this.loggedIn = user !== null;
+  }
+
+  isAuthenticated() {
+    const promise = new Promise((resolve, reject) => {
+      resolve(this.loggedIn);
+    });
+
+    return promise;
   }
 
   getCurrentUser(): Observable<CurrentUser> {
@@ -34,7 +43,7 @@ export class AuthService {
   loginUser(loginUserDTO: LoginUserDTO): Observable<ILoginUserAccount> {
     return this.http.post<ILoginUserAccount>('/account/login', loginUserDTO);
   }
-  
+
   checkUserAuth(): Observable<ICheckUserAuthResult> {
     return this.http.post<ICheckUserAuthResult>('/account/check-auth', null);
   }
